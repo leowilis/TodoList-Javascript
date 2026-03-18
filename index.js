@@ -25,3 +25,21 @@ function addTodo() {
 
     console.log(`To-do "${newTodo.text}" added successfully.`);
 }
+
+// Implementation of logic to mark to-do as completed
+function markTodoCompleted() {
+    listTodos();
+    if (todos.length === 0) {
+        return;
+    }
+    const input = prompt("Enter the number of the to-do to mark as completed: ");
+    const todoNumber = parseInt(input);
+
+    if (isNaN(todoNumber) || todoNumber < 1 || todoNumber > todos.length) {
+        console.log("Invalid number. Please enter a valid number from the list.");
+        return;
+    }
+
+    selectedTodo.isCompleted = true;
+    console.log(`To-do "${selectedTodo.text}" marked as completed.`);
+}
