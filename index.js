@@ -76,3 +76,66 @@ function listTodos() {
   });
   console.log('');
 }
+
+// Implementation of the main logic of the application (interactive menu)
+function runTodoApp() {
+    console.log("=== WELCOME TO YOUR TO-DO LIST APP ===\n");
+  let running = true;
+  while (running) {
+    console.log("Commands:");
+    console.log("1. add    - Add a new to-do");
+    console.log("2. list   - View all to-dos");
+    console.log("3. complete - Mark a to-do as completed");
+    console.log("4. delete - Delete a to-do");
+    console.log("5. exit   - Exit the app\n");
+
+    const command = prompt("Enter a command: ");
+    const normalizedCommand = command ? command.trim().toLowerCase() : "";
+    console.log("");
+
+    switch (normalizedCommand) {
+      case "add":
+      case "1":
+        addTodo();
+        break;
+
+      case "list":
+      case "2":
+        listTodos();
+        break;
+
+      case "complete":
+      case "3":
+        markTodoCompleted();
+        break;
+
+      case "delete":
+      case "4":
+        deleteTodo();
+        break;
+
+      case "exit":
+      case "5":
+        console.log("Goodbye! Your to-dos are waiting for you next time.");
+        running = false;
+        break;
+      default:
+        console.log("Invalid command. Please try again.\n");
+    }
+  }
+}
+
+// Run the program
+if (require.main === module) {
+  runTodoApp();
+}
+
+module.exports = {
+  todos,
+  generateUniqueId,
+  addTodo,
+  markTodoCompleted,
+  deleteTodo,
+  listTodos,
+  runTodoApp,
+};
