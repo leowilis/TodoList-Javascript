@@ -43,3 +43,21 @@ function markTodoCompleted() {
     selectedTodo.isCompleted = true;
     console.log(`To-do "${selectedTodo.text}" marked as completed.`);
 }
+
+function deleteTodo() {
+    listTodos();
+    if (todos.length === 0) {
+        return;
+    }
+    const input = prompt("Enter the number of the to-do to delete: ");
+    const todoNumber = parseInt(input);
+
+    if (isNaN(todoNumber) || todoNumber < 1 || todoNumber > todos.length) {
+        console.log("Invalid number. Please enter a valid number from the list.");
+        return;
+    }
+    const todoIndex = todoNumber - 1;
+    const selectedTodo = todos[todoIndex];
+    todos.splice(todoIndex, 1);
+    console.log(`To-do "${selectedTodo.text}" deleted.`);
+  }
